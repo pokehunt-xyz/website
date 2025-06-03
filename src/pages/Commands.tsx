@@ -1,7 +1,17 @@
 import { useEffect, useState } from 'react';
 
+interface Command {
+	name: string;
+	description: string;
+}
+
+interface Category {
+	category: string;
+	commands: Command[];
+}
+
 export default function Commands() {
-	const [data, setData] = useState([]);
+	const [data, setData] = useState<Category[]>([]);
 	useEffect(() => {
 		fetch('commands.json')
 			.then((res) => res.json())

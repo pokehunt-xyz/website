@@ -6,18 +6,18 @@ import { MdMenu, MdMenuOpen } from 'react-icons/md';
 import { Link, useLocation } from 'react-router-dom';
 
 import { AuthContext } from '../AuthContext';
+import { isUserIn, type Config } from '../utils';
 import LoginButton from './LoginButton';
 
 import discordSvg from '../assets/footer/discord.svg';
 import telegramSvg from '../assets/footer/telegram.svg';
 
-export default function NavBar() {
+export default function NavBar({ config }: { config: Config }) {
 	useEffect(() => {
 		AOS.init();
 	}, []);
 	const location = useLocation();
 
-	const [isLoaded, setIsLoaded] = useState(false);
 	const [sidebar, setSidebar] = useState(false);
 	const [loginModalOpen, setLoginModalOpen] = useState(false);
 
@@ -29,13 +29,7 @@ export default function NavBar() {
 	}, [location.hash]);
 
 	const { user, logout } = useContext(AuthContext);
-	useEffect(() => {
-		if (user) setIsLoaded(true);
-	}, [user]);
-
-	if (!isLoaded) return <div></div>;
-
-	const loggedIn = user.loggedIn ?? false;
+	if (!user) return <div></div>;
 
 	// const navClass = ({ isActive, isPending }) => (isPending || isActive ? 'active-path' : 'links');
 	const pages = (
@@ -60,7 +54,7 @@ export default function NavBar() {
 			<Link to="/invite-telegram" className="text-white btn btn-sm btn-outline border-none">
 				<img className="w-5 h-5" src={telegramSvg} /> Add to group
 			</Link>
-			{loggedIn ? (
+			{isUserIn(user) ? (
 				<>
 					<Link to="/dashboard" className="text-white btn btn-sm btn-outline">
 						{user.hasDiscord && <img className="w-5 h-5" src={discordSvg} />}
@@ -133,7 +127,7 @@ export default function NavBar() {
 			</div>
 
 			{loginModalOpen && (
-				<div tabIndex="-1" className="fixed inset-0 z-50 flex justify-center items-center w-full h-full bg-opacity-50 backdrop-blur-sm">
+				<div tabIndex={-1} className="fixed inset-0 z-50 flex justify-center items-center w-full h-full bg-opacity-50 backdrop-blur-sm">
 					<div className="relative p-8 w-full max-w-lg max-h-full rounded-lg shadow-lg bg-tertiary_light text-white space-y-6">
 						<button
 							onClick={closeLoginModal}
@@ -148,8 +142,8 @@ export default function NavBar() {
 							</h1>
 						</div>
 
-						<LoginButton type="discord" link={false} className="w-full" />
-						<LoginButton type="telegram" link={false} className="w-full" />
+						<LoginButton type="discord" link={false} API_URL={config.API_URL} className="w-full" />
+						<LoginButton type="telegram" link={false} API_URL={config.API_URL} className="w-full" />
 					</div>
 				</div>
 			)}

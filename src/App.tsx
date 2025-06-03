@@ -1,4 +1,4 @@
-import React from 'react';
+import { StrictMode, useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
@@ -24,26 +24,35 @@ const TELEGRAM_CHAT_LINK = 'https://t.me/pokehunt_xyz';
 const GITHUB = 'https://github.com/pokehunt-xyz';
 
 import './index.css';
+import { type Config, loadConfig } from './utils';
 
-createRoot(document.getElementById('root')).render(
-	<React.StrictMode>
+createRoot(document.getElementById('root')!).render(
+	<StrictMode>
 		<App />
-	</React.StrictMode>
+	</StrictMode>
 );
 
 export default function App() {
+	const [config, setConfig] = useState<Config | null>(null);
+
+	useEffect(() => {
+		loadConfig().then((c) => setConfig(c));
+	}, []);
+
+	if (config === null) return <p>Loading...</p>;
+
 	return (
 		<BrowserRouter>
 			<div className="font-poppins">
-				<AuthProvider>
-					<NavBar />
+				<AuthProvider config={config}>
+					<NavBar config={config} />
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/login" element={<Navigate to="/#login" />} />
 						{/* <Route path="/commands" element={<Commands />} /> */}
 						<Route path="/donate-status" element={<DonateStatus />} />
-						<Route path="/dashboard" element={<Dashboard />} />
-						<Route path="/captcha/:id" element={<Captcha />} />
+						<Route path="/dashboard" element={<Dashboard config={config} />} />
+						<Route path="/captcha/:id" element={<Captcha config={config} />} />
 						<Route path="/privacy" element={<Privacy />} />
 						<Route path="/terms" element={<Terms />} />
 						<Route path="/rate-limited" element={<RateLimited />} />

@@ -1,16 +1,24 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+interface PokemonFromPokeapi {
+	name: string;
+	sprites: { front_default: string };
+	types: { type: { name: string } }[];
+}
+
 export default function NotFound() {
-	const [pokemon, setPokemon] = useState(null);
+	const [pokemon, setPokemon] = useState<PokemonFromPokeapi | null>(null);
 	const [bgColor, setBgColor] = useState('bg-gray-200');
 
 	useEffect(() => {
 		const fetchRandomPokemon = async () => {
 			const randomId = Math.floor(Math.random() * 1025) + 1;
 			const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomId}`);
-			const data = await res.json();
-			setPokemon(data);
+			if (res.ok) {
+				const data = await res.json();
+				setPokemon(data);
+			}
 		};
 
 		fetchRandomPokemon();
@@ -88,8 +96,8 @@ export default function NotFound() {
 		}
 	}, [pokemon]);
 
-	function capitalize(str) {
-		return str.charAt(0).toUpperCase() + str.slice(1);
+	function capitalize(string: string): string {
+		return string.charAt(0).toUpperCase() + string.slice(1);
 	}
 
 	return (
