@@ -4,7 +4,9 @@ This is the code for the official PokéHunt Website.
 
 ## How to run the website
 
-Download the file `compose.yml` from [here](https://github.com/pokehunt-xyz/website/blob/main/compose.yml) and edit the environment variables.
+Download the file `config.json` from [here](https://github.com/pokehunt-xyz/website/blob/main/public/config.json) and edit the values
+
+Download the file `compose.yml` from [here](https://github.com/pokehunt-xyz/website/blob/main/compose.yml)
 
 After that run the following command:
 ```

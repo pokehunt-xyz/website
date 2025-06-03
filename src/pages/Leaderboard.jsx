@@ -5,8 +5,8 @@ import { AuthContext } from '../AuthContext';
 
 // https://github.com/pokehunt-xyz/pokehunt-leaderboard-react
 
-// If you want to change the API url, you have to (re)build the Docker container with the env variable set.
-const API_URL = import.meta.env.VITE_API_URL ?? 'https://api.pokehunt.xyz';
+import { loadConfig } from '../config';
+const { API_URL } = await loadConfig();
 
 export default function Loaderboard() {
 	const { user } = useContext(AuthContext);

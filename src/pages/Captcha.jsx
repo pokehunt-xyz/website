@@ -6,9 +6,8 @@ import Turnstile, { useTurnstile } from 'react-turnstile';
 import pikachuHappyPng from '../assets/pikachu-happy.png';
 import pikachuSadPng from '../assets/pikachu-sad.png';
 
-// If you want to change the API url, you have to (re)build the Docker container with the env variable set.
-const API_URL = import.meta.env.VITE_API_URL ?? 'https://api.pokehunt.xyz';
-const CAPTCHA_SITE_KEY = import.meta.env.VITE_CAPTCHA_SITE_KEY ?? '1x00000000000000000000AA';
+import { loadConfig } from '../config';
+const { API_URL, CAPTCHA_SITE_KEY } = await loadConfig();
 
 export default function CaptchaPage() {
 	const { id } = useParams();
