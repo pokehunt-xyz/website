@@ -38,12 +38,11 @@ jobs:
           if [ "${{ github.event_name }}" == "release" ]; then
             echo "tag=${{ github.event.release.tag_name }}" >> $GITHUB_OUTPUT
           elif [ "${{ github.event_name }}" == "workflow_run" ]; then
-            # Fetch the latest release information using GitHub API
-          LATEST_RELEASE=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/releases/latest)
-            echo "tag=$(echo $LATEST_RELEASE | jq -r .tag_name)" >> $GITHUB_OUTPUT
+            echo "tag=${{ github.event.workflow_run.head_commit.message }}" | awk '/^Release v[0-9]+\.[0-9]+\.[0-9]+$/ {print $2}' >> $GITHUB_OUTPUT
           fi
 
       - name: Build and push Docker image
+        if: steps.check-tag.outputs.tag != ''
         uses: docker/build-push-action@v4
         with:
           context: .
