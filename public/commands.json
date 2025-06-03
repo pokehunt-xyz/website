@@ -1,0 +1,92 @@
+[
+  {
+    "category": "General",
+    "commands": [
+      {"name": "botinfo", "description": "Get information about PokéHunt"},
+      {"name": "catch", "description": "Catch a Pokémon"},
+      {"name": "guide", "description": "View a guide on how to use PokéHunt"},
+      {"name": "help", "description": "Get help using PokéHunt"},
+      {"name": "hint", "description": "Get a hint for the spawned Pokémon name"},
+      {"name": "invite", "description": "View the invite link and support server"},
+      {"name": "ping", "description": "View the ping (latency) of PokéHunt"},
+      {"name": "profile", "description": "Check your profile card"},
+      {"name": "release", "description": "Release (delete) a Pokémon"},
+      {"name": "select", "description": "Select a Pokémon"},
+      {"name": "start", "description": "Pick a starter Pokémon"}
+    ]
+  },
+  {
+    "category": "Economy",
+    "commands": [
+      {"name": "balance", "description": "Check the amount of credits you have"},
+      {"name": "buy", "description": "Buy rare candies to level up your Pokémon"},
+      {"name": "daily", "description": "Get a certain amount of credits daily"},
+      {"name": "donate", "description": "Donate and get redeems"},
+      {"name": "favorite", "description": "Set or unset your pokemon as favorite"},
+      {"name": "gamble", "description": "Gamble your credits with other Hunters"},
+      {"name": "hunt", "description": "Go hunting & encounter a random pokemon"},
+      {"name": "leaderboard", "description": "Check the leaderboard!"},
+      {"name": "quests", "description": "Complete quests to get rewards!"},
+      {"name": "redeem howto", "description": "Get information about redeems"},
+      {"name": "redeem balance", "description": "Find out how many redeems you have"},
+      {"name": "redeem credits", "description": "Get credits for a redeem"},
+      {"name": "redeem spawn", "description": "Spawn a Pokémon of your choice for a redeem"}
+    ]
+  },
+  {
+    "category": "Information",
+    "commands": [
+      {"name": "dex", "description": "Get information about a specific Pokémon"},
+      {"name": "info", "description": "Get info about a Pokémon"},
+      {"name": "nickname", "description": "Give a Pokémon a nickname or remove it"},
+      {"name": "pokemon", "description": "Check all your Pokémon"}
+    ]
+  },
+  {
+    "category": "Duel",
+    "commands": [
+      {"name": "duel", "description": "Duel (fight) someone!"},
+      {"name": "learn", "description": "Learn your selected Pokémon a move"},
+      {"name": "moveinfo", "description": "Get information about a move"},
+      {"name": "moves", "description": "Check a Pokémon moves"},
+      {"name": "weak", "description": "Find out which types are immune, resistant or weak others" }
+    ]
+  },
+  {
+    "category": "Market",
+    "commands": [
+      {"name": "market search", "description": "Search for a pokemon on the market!"},
+      {"name": "market list", "description": "Add a pokemon to the market!"},
+      {"name": "market listings", "description": "View all the market listings!"},
+      {"name": "market buy", "description": "Buy a market pokemon!"},
+      {"name": "market view", "description": "View a market pokemon!"},
+      {"name": "market end", "description": "Remove a pokemon from the market!"}
+    ]
+  },
+  {
+    "category": "Auction",
+    "commands": [
+      {"name": "auction search", "description": "Search for a pokemon on the auction!"},
+      {"name": "auction list", "description": "Add a pokemon to the auction!"},
+      {"name": "auction listings", "description": "View all the auction listings!"},
+      {"name": "auction buy", "description": "Buy a auction pokemon!"},
+      {"name": "auction view", "description": "View a auction pokemon!"},
+      {"name": "auction end", "description": "Remove a pokemon from the auction!" }
+    ]
+  },
+  {
+    "category": "Trading",
+    "commands": [
+      {"name": "gift", "description": "Gift a user a Pokémon"},
+      {"name": "pay", "description": "Pay a user some credits or redeems"},
+      {"name": "trade", "description": "Trade Pokémon and/or credits with another Hunter!" }
+    ]
+  },
+  {
+    "category": "Settings",
+    "commands": [
+      {"name": "serversettings", "description": "Change your server settings"},
+      {"name": "settings", "description": "Change your account settings"}
+    ]
+  }
+]

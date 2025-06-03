@@ -1,0 +1,18 @@
+services:
+  pokehunt-website:
+    container_name: pokehunt-website
+    image: ghcr.io/pokehunt-xyz/website:latest
+    restart: unless-stopped
+    environment:
+        - VITE_SITE_DOMAIN=pokehunt.xyz
+        - VITE_API_URL=https://api.pokehunt.xyz
+        - VITE_CAPTCHA_SITE_KEY=${CAPTCHA_SITE_KEY} # Cloudflare turnstile site key
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.pokehunt-site.rule=Host(`pokehunt.xyz`)
+      - traefik.http.services.pokehunt-site.loadbalancer.server.port=3000
+      - traefik.http.routers.pokehunt-site-www.rule=Host(`www.pokehunt.xyz`)
+      - traefik.http.routers.pokehunt-site-www.middlewares=pokehunt-site-www
+      - traefik.http.middlewares.pokehunt-site-www.redirectregex.regex=^https://www.(.*)
+      - traefik.http.middlewares.pokehunt-site-www.redirectregex.replacement=https://$1
+      - traefik.http.middlewares.pokehunt-site-www.redirectregex.permanent=true
