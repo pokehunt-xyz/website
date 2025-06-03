@@ -4,9 +4,9 @@ services:
     image: ghcr.io/pokehunt-xyz/website:latest
     restart: unless-stopped
     environment:
-        - VITE_SITE_DOMAIN=pokehunt.xyz
-        - VITE_API_URL=https://api.pokehunt.xyz
-        - VITE_CAPTCHA_SITE_KEY=${CAPTCHA_SITE_KEY} # Cloudflare turnstile site key
+      - VITE_SITE_DOMAIN=pokehunt.xyz # only used when dev
+    volumes:
+      - ./config.json:/app/public/config.json
     labels:
       - traefik.enable=true
       - traefik.http.routers.pokehunt-site.rule=Host(`pokehunt.xyz`)
