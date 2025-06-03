@@ -1,0 +1,38 @@
+[
+	{
+		"stars": 5,
+		"review": "I've been watching this bot grow from a long time and am really impressed with how far it's come along. It has all the features I could need while still feeling as balanced as ever!",
+		"name": "Celeste",
+		"avatar": ""
+	},
+	{
+		"stars": 5,
+		"review": "PokéHunt is a great bot with well-thought-out features that make it fun and easy to use. It's a solid choice for anyone who enjoys collecting and trading Pokémon. Definitely worth trying!",
+		"name": "Aurora",
+		"avatar": ""
+	},
+	{
+		"stars": 5,
+		"review": "This bot is a fantastic take on the classic Pokémon games. The smooth interface and fast response times make it super enjoyable to use. The features are well thought out, and it's clear a lot of effort has gone into it. With many features coming soon like core Pokemon battle system with teams etc, it's only going to get better. Definitely worth checking out!",
+		"name": "Nakul",
+		"avatar": ""
+	},
+	{
+		"stars": 4.6,
+		"review": "Good Pokémon bot that resent Pokémon game closely, fast responses speed. Organised and good looking UI. Can't wait for pvp mode which is the core of the game.",
+		"name": "Billy",
+		"avatar": ""
+	},
+	{
+		"stars": 4.5,
+		"review": "This bot captures the essence of classic Pokémon games with impressive attention to detail. The interface is sleek and user-friendly, complemented by rapid response times. The upcoming PvP mode promises to elevate the experience even further—definitely worth the anticipation.",
+		"name": "Kevin",
+		"avatar": ""
+	},
+	{
+		"stars": 3,
+		"review": "Have been using pokehunt since very long. And actually it is good bot and help me to experience nostalgia. The suggestions I would like to give are: regular events, better dual system with proper team's and actual Pokemon strategies.",
+		"name": "mr_octopus",
+		"avatar": ""
+	}
+]
