@@ -5,7 +5,7 @@ import pikachuSadPng from '../assets/pikachu-sad.png';
 
 export default function DonateStatus() {
 	const [searchParams] = useSearchParams();
-	const amount = searchParams.get('amount');
+	const amount = parseInt(searchParams.get('amount') || '0');
 
 	if (amount && amount > 0)
 		return (

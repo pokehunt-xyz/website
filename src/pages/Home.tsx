@@ -1,7 +1,6 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { bool, node, string } from 'prop-types';
-import { useEffect } from 'react';
+import { useEffect, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 
 import Image from '../components/Image';
@@ -25,7 +24,21 @@ export default function Home() {
 		AOS.init();
 	}, []);
 
-	function Feature({ title, imgSrc, imgFallback, imgType = 'image/webp', description, reversed }) {
+	function Feature({
+		title,
+		imgSrc,
+		imgFallback,
+		imgType = 'image/webp',
+		description,
+		reversed,
+	}: {
+		title: string;
+		imgSrc: string;
+		imgFallback: string;
+		imgType?: string;
+		description: ReactNode;
+		reversed: boolean;
+	}) {
 		return (
 			<div
 				className={`flex flex-col ${reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} overflow-x-hidden items-center justify-evenly gap-x-20 px-4 lg:px-24 py-4 lg:py-24`}
@@ -48,14 +61,6 @@ export default function Home() {
 			</div>
 		);
 	}
-	Feature.propTypes = {
-		title: string.isRequired,
-		imgSrc: node.isRequired,
-		imgFallback: node.isRequired,
-		imgType: string,
-		description: node.isRequired,
-		reversed: bool.isRequired,
-	};
 
 	return (
 		<>

@@ -1,10 +1,9 @@
-import { string } from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import discordSvg from '../assets/footer/discord.svg';
 import telegramSvg from '../assets/footer/telegram.svg';
 
-export default function InviteButton({ type, className }) {
+export default function InviteButton({ type, className }: { type: 'support-discord' | 'support-telegram'; className: string }) {
 	if (type === 'support-discord')
 		return (
 			<Link to="/support-discord" className={`text-white btn btn-outline bg-primary border-none ${className}`} aria-label="Join our Discord server">
@@ -18,8 +17,3 @@ export default function InviteButton({ type, className }) {
 			</Link>
 		);
 }
-
-InviteButton.propTypes = {
-	type: string.isRequired,
-	className: string,
-};

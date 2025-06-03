@@ -3,13 +3,12 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Turnstile, { useTurnstile } from 'react-turnstile';
 
+import { type Config } from '../utils';
+
 import pikachuHappyPng from '../assets/pikachu-happy.png';
 import pikachuSadPng from '../assets/pikachu-sad.png';
 
-import { loadConfig } from '../config';
-const { API_URL, CAPTCHA_SITE_KEY } = await loadConfig();
-
-export default function CaptchaPage() {
+export default function CaptchaPage({ config }: { config: Config }) {
 	const { id } = useParams();
 	const navigate = useNavigate();
 	const [status, setStatus] = useState('loading');
@@ -17,15 +16,15 @@ export default function CaptchaPage() {
 
 	// Check initial CAPTCHA status
 	useEffect(() => {
-		fetch(`${API_URL}/user/captcha/${id}`)
+		fetch(`${config.API_URL}/user/captcha/${id}`)
 			.then((res) => {
 				if (res.status === 200) setStatus('pending');
 				else setStatus('solved');
 			})
 			.catch(() => setStatus('error'));
-	}, [id]);
+	}, [id, config.API_URL]);
 
-	const onVerify = async (token) => {
+	const onVerify = async (token: string) => {
 		const fp = await FingerprintJS.load();
 		const { visitorId } = await fp.get();
 
@@ -35,7 +34,7 @@ export default function CaptchaPage() {
 			localStorage.setItem('deviceId', deviceId);
 		}
 
-		fetch(`${API_URL}/user/captcha/${id}`, {
+		fetch(`${config.API_URL}/user/captcha/${id}`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ token, deviceId, fingerprint: visitorId }),
@@ -62,7 +61,7 @@ export default function CaptchaPage() {
 				<>
 					<h1 className="text-5xl font-extrabold mb-6">Verify You are Human</h1>
 					<div className="mb-6">
-						<Turnstile sitekey={CAPTCHA_SITE_KEY} onVerify={onVerify} />
+						<Turnstile sitekey={config.CAPTCHA_SITE_KEY} onVerify={onVerify} />
 					</div>
 					<p className="text-lg">
 						Please complete the verification to prove you are not a bot

@@ -1,16 +1,26 @@
-import { shape, string } from 'prop-types';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, type ReactNode } from 'react';
 import { Link, Navigate, useSearchParams } from 'react-router-dom';
 
 import { AuthContext } from '../AuthContext';
+import { isUserIn, type Config, type UserIn } from '../utils';
 
 import LoginButton from '../components/LoginButton';
 import InviteButton from '../components/InviteButton';
 
-import { loadConfig } from '../config';
-const { API_URL } = await loadConfig();
+interface Pokemon {
+	id: number;
+	uid: string;
+	pid: string;
+	shiny: boolean;
+	favorite: boolean;
+	nickname: string | null;
+	level: number;
+	collectedat: string;
+	image: string;
+	string: string;
+}
 
-async function fetchPokemon(page, setPages, setPokemonList) {
+async function fetchPokemon(page: number, setPages: (pages: number) => void, setPokemonList: (list: ReactNode[]) => void, API_URL: Config['API_URL']) {
 	try {
 		const response = await fetch(`${API_URL}/user/pokemon/page/${page}`, {
 			method: 'GET',
@@ -21,14 +31,14 @@ async function fetchPokemon(page, setPages, setPokemonList) {
 			const data = await response.json();
 			if (data.invalid || isNaN(data.pages) || !data.pokemon) return;
 			setPages(data.pages);
-			setPokemonList(data.pokemon.map((poke) => <PokemonComponent key={poke.uid} poke={poke} />));
+			setPokemonList(data.pokemon.map((poke: Pokemon) => <PokemonComponent key={poke.uid} poke={poke} />));
 		}
 	} catch (e) {
 		console.error('Error fetching Pokemon:', e);
 	}
 }
 
-function PokemonComponent({ poke }) {
+function PokemonComponent({ poke }: { poke: Pokemon }) {
 	return (
 		<div
 			className={`max-w-sm border ${poke.shiny ? 'border-yellow-500' : poke.favorite ? 'border-red-600' : 'border-gray-500'} rounded-lg shadow justify-center`}
@@ -41,35 +51,36 @@ function PokemonComponent({ poke }) {
 	);
 }
 
-PokemonComponent.propTypes = {
-	poke: shape({
-		string: string.isRequired,
-		image: string.isRequired,
-	}).isRequired,
-};
+function LinkStatus(status: string, user: UserIn, API_URL: Config['API_URL']) {
+	if (status === 'true') {
+		return <p>Your account has been linked successfully!</p>;
+	} else if (status === 'false') {
+		return <p>You can not link two existing accounts. If you wish to merge them, please contact support.</p>;
+	} else {
+		return (
+			<>
+				{!user.hasDiscord && <LoginButton type="discord" link={true} API_URL={API_URL} className="" />}
+				{!user.hasTelegram && <LoginButton type="telegram" link={true} API_URL={API_URL} className="" />}
+			</>
+		);
+	}
+}
 
-export default function Dashboard() {
+export default function Dashboard({ config }: { config: Config }) {
 	const { user } = useContext(AuthContext);
-	const [isLoaded, setIsLoaded] = useState(false);
-	const [pokemonList, setPokemonList] = useState([]);
+	const [pokemonList, setPokemonList] = useState<ReactNode[]>([]);
 	const [page, setPage] = useState(1);
 	const [pages, setPages] = useState(1);
 	const [searchParams] = useSearchParams();
 
 	useEffect(() => {
-		if (user) setIsLoaded(true);
-	}, [user]);
-
-	useEffect(() => {
-		if (isLoaded && user.loggedIn && user.hasAccount) {
-			fetchPokemon(page, setPages, setPokemonList);
+		if (user && user.loggedIn && user.hasAccount) {
+			fetchPokemon(page, setPages, setPokemonList, config.API_URL);
 		}
-	}, [isLoaded, user, page]);
+	}, [user, page, config.API_URL]);
 
-	if (!isLoaded) return <div></div>;
-
-	const loggedIn = user.loggedIn ?? false;
-	if (!loggedIn) return <Navigate to="/#login" />;
+	if (!user) return <div></div>;
+	if (!isUserIn(user)) return <Navigate to="/#login" />;
 
 	if (!user.hasAccount) {
 		return (
@@ -97,35 +108,19 @@ export default function Dashboard() {
 						{!user.hasDiscord && (
 							<>
 								<InviteButton type="support-telegram" className="" />
-								<LoginButton type="discord" link={true} />
+								<LoginButton type="discord" link={true} API_URL={config.API_URL} className="" />
 							</>
 						)}
 						{!user.hasTelegram && (
 							<>
 								<InviteButton type="support-discord" className="bg-transparent" />
-								<LoginButton type="telegram" link={true} />
+								<LoginButton type="telegram" link={true} API_URL={config.API_URL} className="" />
 							</>
 						)}
 					</div>
 				</div>
 			</div>
 		);
-	}
-
-	const linkStatus = searchParams.get('link_status');
-	function LinkStatus() {
-		if (linkStatus === 'true') {
-			return <p>Your account has been linked successfully!</p>;
-		} else if (linkStatus === 'false') {
-			return <p>You can not link two existing accounts. If you wish to merge them, please contact support.</p>;
-		} else {
-			return (
-				<>
-					{!user.hasDiscord && <LoginButton type="discord" link={true}></LoginButton>}
-					{!user.hasTelegram && <LoginButton type="telegram" link={true}></LoginButton>}
-				</>
-			);
-		}
 	}
 
 	const previousPage = () => {
@@ -148,7 +143,7 @@ export default function Dashboard() {
 				<h2 data-aos="fade-down" className="text-3xl md:text-4xl lg:text-5xl text-primary font-bold">
 					Hello {user.username}
 				</h2>
-				<div className="flex justify-center my-5">{LinkStatus()}</div>
+				<div className="flex justify-center my-5">{LinkStatus(searchParams.get('link_status') || '', user, config.API_URL)}</div>
 				<div className="flex justify-center my-5">
 					You currently have {user.credits} credits and {user.redeems} redeems
 				</div>
