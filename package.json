@@ -4,8 +4,8 @@
   "description": "The official Pokehunt Website",
   "main": "src/App.jsx",
   "repository": "https://github.com/pokehunt-xyz/website.git",
-  "author": "Pokehunt Team <support@pokehunt.xyz>",
-  "license": "GPL-3.0",
+  "author": "Pokehunt Team <support [at] pokehunt.xyz>",
+  "license": "AGPL-3.0-or-later",
   "type": "module",
   "scripts": {
     "build": "vite build",
