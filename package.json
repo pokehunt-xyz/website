@@ -1,7 +1,7 @@
 {
   "name": "pokehunt-website",
   "version": "3.3.0",
-  "description": "The official Pokehunt Website",
+  "description": "The official PokéHunt Website",
   "main": "src/App.jsx",
   "repository": "https://github.com/pokehunt-xyz/website.git",
   "author": "Pokehunt Team <support [at] pokehunt.xyz>",
@@ -12,7 +12,7 @@
     "preview": "vite preview",
     "dev": "vite --host",
     "eslint": "npx eslint src --report-unused-disable-directives",
-    "update-deps": "npx ncu -u && npm install && npm audit fix"
+    "update-deps": "npx npm-check-updates && npm install && npm audit fix"
   },
   "dependencies": {
     "@fingerprintjs/fingerprintjs": "^4.6.2",
