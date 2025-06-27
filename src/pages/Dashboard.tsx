@@ -88,9 +88,6 @@ export default function Dashboard({ config }: { config: Config }) {
 				<div className="max-w-xl text-white">
 					<h1 className="text-2xl font-semibold mb-4">You do not have an account yet</h1>
 					<p className="text-lg mb-6">
-						If you want to <span className="text-primary font-semibold">link</span> your accounts, please link your existing account using the button below.
-						<br />
-						<br />
 						If you want to <span className="text-primary font-semibold">create</span> a new account, join{' '}
 						{user.hasDiscord && (
 							<Link to="/support-discord" className="link" aria-label="Join our Discord server">
@@ -103,18 +100,22 @@ export default function Dashboard({ config }: { config: Config }) {
 							</Link>
 						)}{' '}
 						and run <span className="text-primary font-semibold">/start</span>
+						<br />
+						<br />
+						If you want to <span className="text-primary font-semibold">link</span> your {user.hasDiscord && 'telegram account'}
+						{user.hasTelegram && 'discord account'}, please link your existing account using the button below.
 					</p>
 					<div className="flex justify-center gap-4">
-						{!user.hasDiscord && (
-							<>
-								<InviteButton type="support-telegram" className="" />
-								<LoginButton type="discord" link={true} API_URL={config.API_URL} className="" />
-							</>
-						)}
-						{!user.hasTelegram && (
+						{user.hasDiscord && (
 							<>
 								<InviteButton type="support-discord" className="bg-transparent" />
 								<LoginButton type="telegram" link={true} API_URL={config.API_URL} className="" />
+							</>
+						)}
+						{user.hasTelegram && (
+							<>
+								<InviteButton type="support-telegram" className="" />
+								<LoginButton type="discord" link={true} API_URL={config.API_URL} className="" />
 							</>
 						)}
 					</div>
