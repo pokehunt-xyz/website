@@ -1,6 +1,6 @@
 {
   "name": "pokehunt-website",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "description": "The official PokéHunt Website",
   "main": "src/App.jsx",
   "repository": "https://github.com/pokehunt-xyz/website.git",
