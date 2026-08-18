@@ -18,8 +18,8 @@ const compat = new FlatCompat({
 });
 
 // Fix globals package
-globals.browser['AudioWorkletGlobalScope'] = globals.browser['AudioWorkletGlobalScope '];
-delete globals.browser['AudioWorkletGlobalScope '];
+// globals.browser['AudioWorkletGlobalScope'] = globals.browser['AudioWorkletGlobalScope '];
+// delete globals.browser['AudioWorkletGlobalScope '];
 
 const eslintConfig = [
 	...fixupConfigRules(
