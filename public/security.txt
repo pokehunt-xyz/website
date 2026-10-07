@@ -1,0 +1,4 @@
+Contact: mailto:support@pokehunt.xyz
+Expires: 2028-01-01T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://pokehunt.xyz/.well-known/security.txt
