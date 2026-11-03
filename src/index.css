@@ -1,5 +1,53 @@
 @import "tailwindcss";
 
+@theme {
+  --font-poppins: "Poppins", sans-serif;
+
+  /** Make sure to modify daisy theme colors as well */
+  --color-primary: #FE0000;
+  --color-secondary: #202020;
+  --color-tertiary: #1B222B;
+  --color-tertiary-light: #242B34;
+}
+
+@plugin "daisyui" {
+  themes: false;
+}
+@plugin "daisyui/theme" {
+  name: "pokehunt";
+  default: true; /* set as default */
+  prefersdark: true; /* set as default dark mode (prefers-color-scheme:dark) */
+  color-scheme: dark; /* color of browser-provided UI */
+
+  --color-primary: #FE0000;
+  --color-primary-content: #ffffff;
+  --color-secondary: #202020;
+  --color-secondary-content: #ffffff;
+
+  --color-base-100: #1B222B;
+  --color-base-200: #202020;
+  --color-base-300: #242B34;
+  --color-base-content: #ffffff;
+
+  /* border radius */
+  --radius-selector: 1rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+
+  /* base sizes */
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+
+  /* border size */
+  --border: px;
+
+  /* effects */
+  --depth: 1;
+  --noise: 0;
+}
+@plugin "tailwindcss-animated";
+
+
 @font-face {
   font-family: 'Poppins';
   font-style: normal;
