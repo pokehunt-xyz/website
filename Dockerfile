@@ -1,4 +1,4 @@
-FROM node:24-alpine AS base
+FROM node:lts-alpine AS base
 
 
 # Install node modules
@@ -21,7 +21,7 @@ RUN npm run build
 
 
 # Final image
-FROM nginx:1.27-alpine
+FROM nginx:stable-alpine-slim
 
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=compiler /app/dist /var/www/html/
