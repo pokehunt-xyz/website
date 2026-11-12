@@ -8,15 +8,21 @@ else
     echo "Configuring trusted TRUSTED_IPS..."
 
     REAL_IP_CONFIG=""
+    remaining="$TRUSTED_IPS"
 
-    # Split comma-separated IPs and CIDRs.
-    OLD_IFS="$IFS"
-    IFS=','
-    set -- $TRUSTED_IPS
-    IFS="$OLD_IFS"
+    # Keep looping until there are no more IPs/CIDRs to process
+    while [ -n "$remaining" ]; do
+        # Extract the next IP/CIDR.
+        ip="${remaining%%,*}"
 
-    for ip in "$@"; do
-        # Remove surrounding whitespace.
+        # Remove the processed IP from the remaining list.
+        if [ "$remaining" = "$ip" ]; then
+            remaining=""
+        else
+            remaining="${remaining#*,}"
+        fi
+
+        # Remove surrounding whitespace and add config line
         ip=$(echo "$ip" | sed 's/^[[:space:]]*//; s/[[:space:]]*$//')
         [ -z "$ip" ] && continue
         REAL_IP_CONFIG="${REAL_IP_CONFIG}set_real_ip_from ${ip};
