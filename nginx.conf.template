@@ -2,6 +2,8 @@ server {
     listen 3000;
     server_name localhost;
 
+    ${REAL_IP_CONFIG}
+
     add_header X-XSS-Protection "1; mode=block" always;
     add_header X-Content-Type-Options "nosniff" always;
     add_header Content-Security-Policy "frame-ancestors 'self' https://top.gg" always;

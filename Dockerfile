@@ -23,9 +23,13 @@ RUN npm run build
 # Final image
 FROM nginx:stable-alpine-slim
 
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./nginx.conf.template /etc/nginx/templates/default.conf.template
 COPY --from=compiler /app/dist /var/www/html/
+
+COPY docker-entrypoint-custom.sh /docker-entrypoint-custom.sh
+RUN chmod +x /docker-entrypoint-custom.sh
 
 EXPOSE 3000
 
-ENTRYPOINT ["nginx","-g","daemon off;"]
+ENTRYPOINT ["/docker-entrypoint-custom.sh"]
+CMD ["nginx", "-g", "daemon off;"]

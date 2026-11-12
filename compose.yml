@@ -5,6 +5,8 @@ services:
     restart: unless-stopped
     environment:
       - VITE_SITE_DOMAIN=pokehunt.xyz # only used when dev
+      - TRUSTED_IPS=${TRUSTED_IPS} # trusted IPs for real IP header, e.g. of Cloudflare or Traefik
+      - NGINX_ENVSUBST_FILTER=^(REAL_IP_CONFIG)$ # only substitute REAL_IP_CONFIG in nginx.conf.template
     volumes:
       - ./config.json:/app/public/config.json
     labels:
