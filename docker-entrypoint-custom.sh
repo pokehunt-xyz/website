@@ -29,8 +29,18 @@ else
 "
     done
 
-    REAL_IP_CONFIG="${REAL_IP_CONFIG}real_ip_header CF-Connecting-IP;
-real_ip_recursive on;"
+
+    if [ "${TRUSTED_CLOUDFLARE:-false}" = "true" ]; then
+        echo "Using Cloudflare CF-Connecting-IP header..."
+        REAL_IP_CONFIG="${REAL_IP_CONFIG}real_ip_header CF-Connecting-IP;
+"
+    else
+        echo "Using X-Forwarded-For header..."
+        REAL_IP_CONFIG="${REAL_IP_CONFIG}real_ip_header X-Forwarded-For;
+"
+    fi
+
+    REAL_IP_CONFIG="${REAL_IP_CONFIG}real_ip_recursive on;"
 
     export REAL_IP_CONFIG
 fi

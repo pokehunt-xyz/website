@@ -7,6 +7,7 @@ services:
       - VITE_SITE_DOMAIN=pokehunt.xyz
       - VITE_API_URL=https://api.pokehunt.xyz
       - VITE_CAPTCHA_SITE_KEY=${CAPTCHA_SITE_KEY} # Cloudflare turnstile site key
+      - TRUSTED_CLOUDFLARE=false   # if behind Cloudflare
       - TRUSTED_IPS=${TRUSTED_IPS} # trusted IPs for real IP header, e.g. of Cloudflare or Traefik
       - NGINX_ENVSUBST_FILTER=^(REAL_IP_CONFIG)$ # only substitute REAL_IP_CONFIG in nginx.conf.template
     volumes:
