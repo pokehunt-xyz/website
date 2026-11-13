@@ -23,7 +23,8 @@ RUN npm run build
 # Final image
 FROM nginx:stable-alpine-slim
 
-COPY ./nginx.conf.template /etc/nginx/templates/default.conf.template
+COPY ./nginx/template.conf /etc/nginx/templates/default.conf.template
+COPY ./nginx/security-headers.conf /etc/nginx/snippets/security-headers.conf
 COPY --from=compiler /app/dist /var/www/html/
 
 COPY docker-entrypoint-custom.sh /docker-entrypoint-custom.sh

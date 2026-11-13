@@ -12,10 +12,14 @@
   <body>
     <script>
       (function(){
-        var redirect = sessionStorage.redirect;
-        delete sessionStorage.redirect;
-        if (redirect && redirect != location.pathname) {
-          history.replaceState(null, null, redirect);
+        try {
+          const redirect = sessionStorage.getItem("redirect");
+          sessionStorage.removeItem("redirect");
+          if (redirect && redirect != location.pathname) {
+            history.replaceState(null, null, redirect);
+          }
+        } catch (error) {
+          console.warn("Session storage unavailable (possibly sandboxed iframe).");
         }
       })();
     </script>
