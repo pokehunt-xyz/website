@@ -4,14 +4,32 @@ server {
 
     ${REAL_IP_CONFIG}
 
-    add_header X-XSS-Protection "1; mode=block" always;
-    add_header X-Content-Type-Options "nosniff" always;
-    add_header Content-Security-Policy "frame-ancestors 'self' https://top.gg" always;
-    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+    # HSTS
     add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload" always;
-    add_header X-Robots-Tag "noindex, nofollow" always;
+
+    # Basic security headers
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-Frame-Options "DENY" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+
+    # Content Security Policy
+    add_header Content-Security-Policy "default-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'self' https://top.gg; form-action 'self'" always;
+
+    # Browser permissions
+    add_header Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()" always;
+
+    # Cross-origin policies
+    add_header Cross-Origin-Opener-Policy "same-origin" always;
+    add_header Cross-Origin-Resource-Policy "same-origin" always;
+
+    # Additional security headers
+    add_header X-Permitted-Cross-Domain-Policies "none" always;
+  
     add_header Server "" always;
     add_header X-Powered-By "" always;
+
+    # Remove server version etc
+    server_tokens off;
 
     root /var/www/html;
     index index.html index.htm;
@@ -19,7 +37,4 @@ server {
     location / {
         try_files $uri /index.html;
     }
-
-    # Remove server version etc
-    server_tokens off;
 }
