@@ -13,7 +13,18 @@ server {
     add_header Referrer-Policy "strict-origin-when-cross-origin" always;
 
     # Content Security Policy
-    add_header Content-Security-Policy "default-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'self' https://top.gg; form-action 'self'" always;
+    add_header Content-Security-Policy "
+        default-src 'self';
+        script-src 'self' 'unsafe-inline';
+        style-src 'self' 'unsafe-inline';
+        img-src 'self' data:;
+        font-src 'self' data:;
+        connect-src 'self' https://api.pokehunt.xyz;
+        object-src 'none';
+        base-uri 'self';
+        frame-ancestors 'self' https://top.gg;
+        form-action 'self';
+    " always;
 
     # Browser permissions
     add_header Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()" always;
