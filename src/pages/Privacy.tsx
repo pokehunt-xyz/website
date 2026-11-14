@@ -37,6 +37,11 @@ export default function Privacy() {
 							credits (in-game currency), quests and challenges completed and other in-game data. Note that this information is not personally identifiable.
 						</li>
 						<li>
+							<span className="font-bold">User names</span>: If enabled (by default disabled), we store your user name to show it various places like
+							leaderboards. You can opt in/out at any time using the `/settings` command. Hiding your username will permanently delete it from our database
+							until opting in again.
+						</li>
+						<li>
 							<span className="font-bold">Other</span>: We may log information about the requests you make to our services, including interactions with our
 							website and API. This data is used primarily to prevent attacks and enforce rate limits. We strive to keep this information stored in memory to
 							minimize its persistence, but we cannot always guarantee that.
