@@ -10,19 +10,6 @@
     <title>PokéHunt</title>
   </head>
   <body>
-    <script>
-      (function(){
-        try {
-          const redirect = sessionStorage.getItem("redirect");
-          sessionStorage.removeItem("redirect");
-          if (redirect && redirect != location.pathname) {
-            history.replaceState(null, null, redirect);
-          }
-        } catch (error) {
-          console.warn("Session storage unavailable (possibly sandboxed iframe).");
-        }
-      })();
-    </script>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root" class="bg-tertiary"></div>
     <script type="module" src="/src/App.tsx"></script>
