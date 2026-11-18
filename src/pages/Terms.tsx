@@ -67,11 +67,11 @@ export default function Terms() {
 					official purchase or redemption mechanisms does not grant users permission to independently sell, purchase, exchange, transfer, or otherwise monetize
 					Virtual Goods outside of mechanisms expressly authorized by Pokéhunt.
 					<br />
-					The distinction between authorized and unauthorized transactions is based on whether a transaction has been explicitly offered, facilitated, or
-					approved by Pokéhunt, not on whether it involves an exchange between real-world money and in-game value. Pokéhunt retains control over its official
-					monetization and redemption mechanisms, including their availability, pricing, exchange rates and conditions. Unauthorized transactions involving
-					real-world money at any stage are strictly prohibited (see the User Conduct section above) and may result in account suspension or termination, as
-					well as forfeiture of involved Virtual Goods.
+					The distinction between authorized and unauthorized transactions is based on whether a transaction has been explicitly offered or approved by
+					Pokéhunt, not on whether it involves an exchange between real-world money and in-game value. Pokéhunt retains control over its official monetization
+					and redemption mechanisms, including their availability, pricing, exchange rates and conditions. Unauthorized transactions involving real-world money
+					at any stage are strictly prohibited (see the User Conduct section above) and may result in account suspension or termination, as well as forfeiture
+					of involved Virtual Goods.
 					<br />
 					We reserve the right to modify, manage, control or remove in-game items at our discretion. All prices and availabilities of our items are subject to
 					change without notice. We are not liable for any losses or damages resulting from such changes.
