@@ -5,7 +5,7 @@ export default function Terms() {
 		<>
 			<div className="bg-secondary px-4 pt-6 md:px-[15vw] lg:px-[20vw] animate-fade-down lg:animate-fade-left">
 				<h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white py-3">Terms of Service</h2>
-				<p>Last updated: 14th January 2025</p>
+				<p>Last updated: 18th November 2026</p>
 				<h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white py-5">Introduction</h3>
 				<p>
 					Welcome to Pokéhunt! These Terms of Service govern your use of our services, including our Discord bot, Telegram bot, website, API and other services
@@ -38,7 +38,11 @@ export default function Terms() {
 				<ul className="list-disc list-inside">
 					<li>Use our services for any illegal or unauthorized purpose</li>
 					<li>Use our services to harass, abuse, insult, harm, defame, slander, disparage, intimidate, or discriminate</li>
-					<li>Trade in-game assets for non in-game currency(ies) or item(s)</li>
+					<li>
+						Engage in unauthorized real-money trading (RMT), including advertising, facilitating, buying, selling, or otherwise participating in transactions
+						involving in-game assets for real-world money, cryptocurrency, gift cards, services, or anything else of real-world monetary value, except through
+						transactions expressly authorized by Pokéhunt.
+					</li>
 					<li>Use any form of cheating, including botting, automations, macros and auto catchers</li>
 					<li>Use exploits or bugs to intentionally gain an advantage, or share information on how to do so</li>
 					<li>Compromise the security of your account or anyone else&apos;s</li>
@@ -50,14 +54,27 @@ export default function Terms() {
 					suspect any unauthorized use of your accounts or believe any of your accounts has been compromised, you agree to notify us immediately. You are solely
 					responsible for any activity that occurs under your accounts (including your Discord and/or Telegram account), whether or not authorized by you.
 				</p>
-				<h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white py-5">In-game items</h3>
+
+				<h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white py-5">Virtual Currency and In-Game Items</h3>
 				<p>
-					You are prohibited from transferring, purchasing, selling, or exchanging in-game items outside of our services for any form of value. Any violation of
-					this may result in suspension or termination of your access to our services. We reserve the right to modify, manage, control or remove in-game items
-					at our discretion.
+					Pokéhunt offers various virtual goods as part of its services, including Pokémon, items, credits, redeems and other forms of in-game content
+					(collectively referred to as "Virtual Goods"). Virtual Goods are provided under a limited, revocable license for use within our services. They do not
+					represent real-world currency, property, or an ownership interest, and users do not acquire any independent right to sell, monetize, or otherwise
+					commercially exploit them.
 					<br />
-					All prices and availabilities of our items are subject to change without notice. We are not liable for any losses or damages resulting from such
-					changes.
+					Certain Virtual Goods and currencies may be obtained through authorized purchases using real-world money. These transactions are explicitly offered or
+					authorized by Pokéhunt and are subject to the prices, exchange rates, redemption options and conditions established by us. The availability of
+					official purchase or redemption mechanisms does not grant users permission to independently sell, purchase, exchange, transfer, or otherwise monetize
+					Virtual Goods outside of mechanisms expressly authorized by Pokéhunt.
+					<br />
+					The distinction between authorized and unauthorized transactions is based on whether a transaction has been explicitly offered, facilitated, or
+					approved by Pokéhunt, not on whether it involves an exchange between real-world money and in-game value. Pokéhunt retains control over its official
+					monetization and redemption mechanisms, including their availability, pricing, exchange rates and conditions. Unauthorized transactions involving
+					real-world money at any stage are strictly prohibited (see the User Conduct section above) and may result in account suspension or termination, as
+					well as forfeiture of involved Virtual Goods.
+					<br />
+					We reserve the right to modify, manage, control or remove in-game items at our discretion. All prices and availabilities of our items are subject to
+					change without notice. We are not liable for any losses or damages resulting from such changes.
 					<br />
 					All purchases made within our services are eligible for a refund within 14 days of purchase, provided the purchased item has not been used. Once the
 					purchased item has been used, refunds are no longer available. If you believe there has been an error with your transaction, please contact support
@@ -65,9 +82,15 @@ export default function Terms() {
 				</p>
 				<h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white py-5">Termination</h3>
 				<p>
-					We reserve the right to terminate or suspend your account at any time without prior notice if we believe you have violated these Terms of Service.
-					Upon termination, your right to use any of our services will immediately cease. In the event of a suspension or termination of your account for any
-					reason attributable to you, any in-game items may be forfeited and no refunds will be issued.
+					We reserve the right to terminate or suspend your account to our services if we believe you have violated these Terms of Service. Depending on the
+					severity of the violation, we may issue a warning, temporary suspension or permanent ban. We reserve the right to terminate or suspend your account
+					without prior notice if we believe you have violated these Terms of Service. We may also terminate or suspend your account for any other reason at our
+					discretion, including but not limited to security concerns, or changes to our services.
+					<br />
+					Upon termination, your right to use any of our services will immediately cease. Virtual Goods associated with a suspended or terminated account may be
+					restricted, removed, or forfeited, subject to applicable law.
+					<br />
+					Refunds following suspension or termination will be handled in accordance with applicable law.
 				</p>
 				<h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white py-5">Intellectual Property</h3>
 				<p>
