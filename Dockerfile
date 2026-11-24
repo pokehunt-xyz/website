@@ -21,8 +21,13 @@ RUN npm run build
 
 
 # Final image
-FROM nginx:stable-alpine-slim
+# Non-slim image ships the njs module (needed for the CSP nonce)
+FROM nginx:stable-alpine
 
+# load_module must be in the main context, so prepend it to nginx.conf
+RUN sed -i '1i load_module modules/ngx_http_js_module.so;' /etc/nginx/nginx.conf
+
+COPY ./nginx/csp.js /etc/nginx/njs/csp.js
 COPY ./nginx/template.conf /etc/nginx/templates/default.conf.template
 COPY ./nginx/security-headers.conf /etc/nginx/snippets/security-headers.conf
 COPY --from=compiler /app/dist /var/www/html/
