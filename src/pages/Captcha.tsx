@@ -1,7 +1,7 @@
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import Turnstile, { useTurnstile } from 'react-turnstile';
+import { Turnstile, useTurnstile } from 'react-turnstile';
 
 import { type Config } from '../utils';
 
