@@ -34,13 +34,18 @@ export default function Footer() {
 											Support
 										</Link>
 									</li>
-									<li className="flex gap-2">
+									<li className="flex gap-2 mb-4">
 										<img className="w-5 h-5" src={telegramSvg} />
 										<Link to="/invite-telegram" className="link link-hover">
 											Bot
 										</Link>
 										<Link to="/support-telegram" className="link link-hover">
 											Support
+										</Link>
+									</li>
+									<li>
+										<Link to="/leaderboard" className="link link-hover">
+											Leaderboards
 										</Link>
 									</li>
 								</ul>

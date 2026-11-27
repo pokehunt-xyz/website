@@ -12,6 +12,7 @@ import Captcha from './pages/Captcha';
 import Dashboard from './pages/Dashboard';
 import DonateStatus from './pages/DonateStatus';
 import Home from './pages/Home';
+import Leaderboard from './pages/Leaderboard';
 import NotFound from './pages/NotFound';
 import Privacy from './pages/Privacy';
 import RateLimited from './pages/RateLimited';
@@ -52,6 +53,7 @@ export default function App() {
 						{/* <Route path="/commands" element={<Commands />} /> */}
 						<Route path="/donate-status" element={<DonateStatus />} />
 						<Route path="/dashboard" element={<Dashboard config={config} />} />
+						<Route path="/leaderboard" element={<Leaderboard config={config} />} />
 						<Route path="/captcha/:id" element={<Captcha config={config} />} />
 						<Route path="/privacy" element={<Privacy />} />
 						<Route path="/terms" element={<Terms />} />

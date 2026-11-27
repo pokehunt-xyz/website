@@ -3,7 +3,7 @@ import 'aos/dist/aos.css';
 import { useContext, useEffect, useState } from 'react';
 import { LiaTimesSolid } from 'react-icons/lia';
 import { MdMenu, MdMenuOpen } from 'react-icons/md';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 import { AuthContext } from '../AuthContext';
 import { isUserIn, type Config } from '../utils';
@@ -17,12 +17,17 @@ export default function NavBar({ config }: { config: Config }) {
 		AOS.init();
 	}, []);
 	const location = useLocation();
+	const navigate = useNavigate();
 
 	const [sidebar, setSidebar] = useState(false);
 	const [loginModalOpen, setLoginModalOpen] = useState(false);
 
 	const openLoginModal = () => setLoginModalOpen(true);
-	const closeLoginModal = () => setLoginModalOpen(false);
+	const closeLoginModal = () => {
+		setLoginModalOpen(false);
+		// Remove #login, so a link to #login opens the login again
+		if (location.hash === '#login') navigate({ pathname: location.pathname, search: location.search, hash: '' }, { replace: true });
+	};
 
 	useEffect(() => {
 		if (location.hash === '#login') setLoginModalOpen(true);
@@ -34,6 +39,11 @@ export default function NavBar({ config }: { config: Config }) {
 	// const navClass = ({ isActive, isPending }) => (isPending || isActive ? 'active-path' : 'links');
 	const pages = (
 		<>
+			<li>
+				<NavLink to="/leaderboard" onClick={() => setSidebar(false)} className={({ isActive }) => (isActive ? 'active-path' : 'links')}>
+					Leaderboards
+				</NavLink>
+			</li>
 			{/* <li>
 				<NavLink to="/" className={navClass}>
 					Home
