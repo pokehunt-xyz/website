@@ -43,7 +43,10 @@ export default function Footer() {
 											Support
 										</Link>
 									</li>
-									<li>
+									<li className="flex gap-2">
+										<Link to="/commands" className="link link-hover">
+											Commands
+										</Link>
 										<Link to="/leaderboard" className="link link-hover">
 											Leaderboards
 										</Link>

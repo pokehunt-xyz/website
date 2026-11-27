@@ -7,7 +7,7 @@ import ExternalRedirect from './components/ExternalRedirect';
 import NavBar from './components/Navbar';
 import Footer from './components/Footer';
 
-// import Commands from './pages/Commands';
+import Commands from './pages/Commands';
 import Captcha from './pages/Captcha';
 import Dashboard from './pages/Dashboard';
 import DonateStatus from './pages/DonateStatus';
@@ -50,7 +50,7 @@ export default function App() {
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/login" element={<Navigate to="/#login" />} />
-						{/* <Route path="/commands" element={<Commands />} /> */}
+						<Route path="/commands" element={<Commands config={config} />} />
 						<Route path="/donate-status" element={<DonateStatus />} />
 						<Route path="/dashboard" element={<Dashboard config={config} />} />
 						<Route path="/leaderboard" element={<Leaderboard config={config} />} />

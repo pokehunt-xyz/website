@@ -49,11 +49,11 @@ export default function NavBar({ config }: { config: Config }) {
 					Home
 				</NavLink>
 			</li> */}
-			{/* <li>
-				<NavLink to="/commands" className={navClass}>
+			<li>
+				<NavLink to="/commands" onClick={() => setSidebar(false)} className={({ isActive }) => (isActive ? 'active-path' : 'links')}>
 					Commands
 				</NavLink>
-			</li> */}
+			</li>
 		</>
 	);
 	const btns = (
