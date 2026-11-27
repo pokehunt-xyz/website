@@ -40,6 +40,11 @@ export default function NavBar({ config }: { config: Config }) {
 	const pages = (
 		<>
 			<li>
+				<NavLink to="/commands" onClick={() => setSidebar(false)} className={({ isActive }) => (isActive ? 'active-path' : 'links')}>
+					Commands
+				</NavLink>
+			</li>
+			<li>
 				<NavLink to="/leaderboard" onClick={() => setSidebar(false)} className={({ isActive }) => (isActive ? 'active-path' : 'links')}>
 					Leaderboards
 				</NavLink>
@@ -49,11 +54,6 @@ export default function NavBar({ config }: { config: Config }) {
 					Home
 				</NavLink>
 			</li> */}
-			<li>
-				<NavLink to="/commands" onClick={() => setSidebar(false)} className={({ isActive }) => (isActive ? 'active-path' : 'links')}>
-					Commands
-				</NavLink>
-			</li>
 		</>
 	);
 	const btns = (

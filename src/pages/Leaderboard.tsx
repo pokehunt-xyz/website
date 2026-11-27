@@ -10,7 +10,6 @@ import {
 	FaCrosshairs,
 	FaCrown,
 	FaShieldHalved,
-	FaStar,
 	FaStore,
 	FaTriangleExclamation,
 	FaTrophy,
@@ -67,7 +66,6 @@ const DEFAULT_CATEGORY = 'allRound';
 const ICONS: Record<string, IconType> = {
 	allRound: FaCrown,
 	dex: FaBookOpen,
-	shinies: FaStar,
 	catches: MdCatchingPokemon,
 	hunts: FaCrosshairs,
 	duels: FaShieldHalved,
